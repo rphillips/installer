@@ -530,7 +530,7 @@ func deleteEC2DHCPOptions(client *ec2.EC2, id string, logger logrus.FieldLogger)
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted DHCP Options")
 	return nil
 }
 
@@ -572,7 +572,7 @@ func deleteEC2Image(client *ec2.EC2, id string, filter Filter, logger logrus.Fie
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted Image")
 	return nil
 }
 
@@ -587,7 +587,7 @@ func deleteEC2ElasticIP(client *ec2.EC2, id string, logger logrus.FieldLogger) e
 		return err
 	}
 
-	logger.Info("Released")
+	logger.Info("Released Elastic IP")
 	return nil
 }
 
@@ -627,7 +627,7 @@ func deleteEC2Instance(ec2Client *ec2.EC2, iamClient *iam.IAM, id string, logger
 				return err
 			}
 
-			logger.Info("Deleted")
+			logger.Info("Deleted EC2 Instance")
 		}
 	}
 	return nil
@@ -687,7 +687,7 @@ func deleteEC2InternetGateway(client *ec2.EC2, id string, logger logrus.FieldLog
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted Internet Gateway")
 	return nil
 }
 
@@ -702,7 +702,7 @@ func deleteEC2NATGateway(client *ec2.EC2, id string, logger logrus.FieldLogger) 
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted NAT Gateway")
 	return nil
 }
 
@@ -789,7 +789,7 @@ func deleteEC2RouteTableObject(client *ec2.EC2, table *ec2.RouteTable, logger lo
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 Route")
 	return nil
 }
 
@@ -870,7 +870,7 @@ func deleteEC2SecurityGroup(client *ec2.EC2, id string, logger logrus.FieldLogge
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 SecurityGroups")
 	return nil
 }
 
@@ -885,7 +885,7 @@ func deleteEC2Snapshot(client *ec2.EC2, id string, logger logrus.FieldLogger) er
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 Snapshot")
 	return nil
 }
 
@@ -900,7 +900,7 @@ func deleteEC2NetworkInterface(client *ec2.EC2, id string, logger logrus.FieldLo
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 Network Interface")
 	return nil
 }
 
@@ -947,7 +947,7 @@ func deleteEC2Subnet(client *ec2.EC2, id string, logger logrus.FieldLogger) erro
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 Subnet")
 	return nil
 }
 
@@ -962,7 +962,7 @@ func deleteEC2Volume(client *ec2.EC2, id string, logger logrus.FieldLogger) erro
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 Volume")
 	return nil
 }
 
@@ -998,7 +998,7 @@ func deleteEC2VPC(ec2Client *ec2.EC2, elbClient *elb.ELB, elbv2Client *elbv2.ELB
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 VPC")
 	return nil
 }
 
@@ -1010,7 +1010,7 @@ func deleteEC2VPCEndpoint(client *ec2.EC2, id string, logger logrus.FieldLogger)
 		return errors.Wrapf(err, "cannot delete VPC endpoint %s", id)
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted EC2 VPC Endpoint")
 	return nil
 }
 
@@ -1079,7 +1079,7 @@ func deleteElasticLoadBalancerClassic(client *elb.ELB, name string, logger logru
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted Elastic Load Balancer")
 	return nil
 }
 
@@ -1127,7 +1127,7 @@ func deleteElasticLoadBalancerTargetGroup(client *elbv2.ELBV2, arn arn.ARN, logg
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted Elastic Load Balancer Target Group")
 	return nil
 }
 
@@ -1182,7 +1182,7 @@ func deleteElasticLoadBalancerV2(client *elbv2.ELBV2, arn arn.ARN, logger logrus
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted Elastic Load Balancer")
 	return nil
 }
 
@@ -1260,7 +1260,7 @@ func deleteIAMInstanceProfileByName(client *iam.IAM, name *string, logger logrus
 		}
 		return err
 	}
-	logger.WithField("InstanceProfileName", *name).Info("Deleted")
+	logger.WithField("InstanceProfileName", *name).Info("Deleted IAM Instance Profile")
 	return err
 }
 
@@ -1330,7 +1330,7 @@ func deleteIAMRole(client *iam.IAM, roleARN arn.ARN, logger logrus.FieldLogger) 
 					}
 					lastError = errors.Wrapf(err, "deleting IAM role policy %s", *policy)
 				}
-				logger.WithField("policy", *policy).Info("Deleted")
+				logger.WithField("policy", *policy).Info("Deleted IAM Role")
 			}
 
 			return !lastPage
@@ -1382,7 +1382,7 @@ func deleteIAMRole(client *iam.IAM, roleARN arn.ARN, logger logrus.FieldLogger) 
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted IAM Role")
 	return nil
 }
 
@@ -1402,7 +1402,7 @@ func deleteIAMUser(client *iam.IAM, id string, logger logrus.FieldLogger) error 
 					}
 					lastError = errors.Wrapf(err, "deleting IAM user policy %s", *policy)
 				}
-				logger.WithField("policy", *policy).Info("Deleted")
+				logger.WithField("policy", *policy).Info("Deleted IAM User Policy")
 			}
 
 			return !lastPage
@@ -1450,7 +1450,7 @@ func deleteIAMUser(client *iam.IAM, id string, logger logrus.FieldLogger) error 
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted IAM User")
 	return nil
 }
 
@@ -1543,7 +1543,7 @@ func deleteRoute53(session *session.Session, arn arn.ARN, logger logrus.FieldLog
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted DNS")
 	return nil
 }
 
@@ -1564,7 +1564,7 @@ func deleteRoute53RecordSet(client *route53.Route53, zoneID string, recordSet *r
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted DNS RecordSet")
 	return nil
 }
 
@@ -1587,6 +1587,6 @@ func deleteS3(session *session.Session, arn arn.ARN, logger logrus.FieldLogger) 
 		return err
 	}
 
-	logger.Info("Deleted")
+	logger.Info("Deleted S3")
 	return nil
 }
